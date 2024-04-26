@@ -1,2 +1,2 @@
 # MetaSync_bot
-@MetaSync_bot
+Subscribe @MetaSync_bot!
