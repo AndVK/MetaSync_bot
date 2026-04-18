@@ -1,10 +1,182 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="google-site-verification" content="9OJJ5vNWNdmrp18idYirk3aP3WhV7aS3UIYN1lRcpJI" />
-    <meta http-equiv="refresh" content="0; url=https://github.com/AndVK/MetaSync_bot">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="9OJJ5vNWNdmrp18idYirk3aP3WhV7aS3UIYN1lRcpJI" />
+
+  <title>MetaSync Bot — Free Telegram Crypto Price Tracker (BTC, ETH, SOL)</title>
+  <meta name="description" content="Free Telegram bot for tracking Bitcoin, Ethereum and Solana prices. Daily reports at 12:00 UTC, instant alerts on 1%+ price moves, no signup required.">
+  <meta name="keywords" content="telegram crypto bot, bitcoin price alert, BTC price telegram, ETH price bot, SOL price tracker, free crypto bot, cryptocurrency notifications">
+  <link rel="canonical" href="https://andvk.github.io/MetaSync_bot/">
+
+  <meta property="og:title" content="MetaSync Bot — Crypto Prices in Telegram">
+  <meta property="og:description" content="BTC, ETH, SOL prices and volatility alerts in Telegram. Open the bot, press Start — that's it.">
+  <meta property="og:image" content="https://github.com/AndVK/MetaSync_bot/assets/89656461/64a31090-07f8-4c3c-95f9-a2ac3829470a">
+  <meta property="og:url" content="https://andvk.github.io/MetaSync_bot/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MetaSync Bot — Crypto Prices in Telegram">
+  <meta name="twitter:description" content="Free Telegram bot for BTC, ETH, SOL prices and volatility alerts.">
+  <meta name="twitter:image" content="https://github.com/AndVK/MetaSync_bot/assets/89656461/64a31090-07f8-4c3c-95f9-a2ac3829470a">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "MetaSync Bot",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Telegram",
+    "description": "Telegram bot tracking BTC, ETH, SOL prices with daily reports and volatility alerts.",
+    "url": "https://t.me/MetaSync_bot",
+    "author": { "@type": "Person", "name": "AndVK" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is MetaSync Bot free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, MetaSync Bot is completely free. There are no paid tiers, accounts, or in-app purchases." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which cryptocurrencies does the bot support?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The bot tracks Bitcoin (BTC), Ethereum (ETH) and Solana (SOL)." }
+      },
+      {
+        "@type": "Question",
+        "name": "When do I get daily price reports?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Daily reports are delivered every day at 12:00 UTC and include the current price and 24-hour change for each supported coin." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do volatility alerts work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "When any tracked coin moves more than 1% in a short time window, the bot sends you an instant Telegram message. You can enable or disable alerts per coin via the /change command." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the bot store my personal data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. The bot only stores your Telegram chat ID to send notifications. It does not ask for wallets, emails, or any personal information." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+      color: #1a1a1a;
+      background: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { color: #e6e6e6; background: #121212; }
+      a { color: #6ea8fe; }
+      code { background: #2a2a2a; }
+      .cta { background: #2ea043; }
+    }
+    h1 { font-size: 2rem; line-height: 1.25; margin-top: 0; }
+    h2 { margin-top: 2.25rem; font-size: 1.35rem; }
+    h3 { margin-top: 1.5rem; font-size: 1.1rem; }
+    p, li { font-size: 1rem; }
+    ul { padding-left: 1.25rem; }
+    code { background: #f1f1f1; padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.92em; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid #ddd; }
+    .cta {
+      display: inline-block;
+      background: #229ed9;
+      color: #fff;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0.5rem 0 1.5rem;
+    }
+    .cta:hover { opacity: 0.9; }
+    .tagline { font-size: 1.1rem; color: #555; }
+    @media (prefers-color-scheme: dark) { .tagline { color: #aaa; } }
+    footer { margin-top: 3rem; font-size: 0.9rem; color: #888; }
+  </style>
 </head>
 <body>
-    <p>Redirecting to <a href="https://github.com/AndVK/MetaSync_bot">repository</a>...</p>
+  <main>
+    <h1>MetaSync Bot — Simple Crypto Price Tracker in Telegram</h1>
+    <p class="tagline">Track Bitcoin (BTC), Ethereum (ETH) and Solana (SOL) prices without leaving Telegram. Daily reports and instant alerts — no signup, no clutter.</p>
+
+    <p><a class="cta" href="https://t.me/MetaSync_bot">Open MetaSync Bot in Telegram →</a></p>
+
+    <h2>What the bot does</h2>
+    <ul>
+      <li><strong>Daily reports</strong> — every day at 12:00 UTC you receive current prices and 24h changes for BTC, ETH and SOL.</li>
+      <li><strong>Volatility alerts</strong> — instant notification when any tracked coin moves more than 1%.</li>
+      <li><strong>On-demand prices</strong> — send <code>/price</code> at any time to see current rates.</li>
+      <li><strong>Per-coin alert toggles</strong> — configure which coins trigger alerts via <code>/change</code>.</li>
+    </ul>
+
+    <h2>Why MetaSync Bot?</h2>
+    <p>Most crypto bots are overloaded with charts, portfolios and paid tiers. MetaSync Bot does one thing well: it keeps you posted on BTC, ETH and SOL prices with zero friction.</p>
+    <ul>
+      <li>No signup — works with your existing Telegram account.</li>
+      <li>No wallet access, no email, no personal data required.</li>
+      <li>Free and open source.</li>
+    </ul>
+
+    <h2>Bot commands</h2>
+    <table>
+      <thead><tr><th>Command</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>/start</code></td><td>Subscribe to daily price reports</td></tr>
+        <tr><td><code>/stop</code></td><td>Unsubscribe from reports</td></tr>
+        <tr><td><code>/price</code></td><td>Show current BTC, ETH, SOL prices</td></tr>
+        <tr><td><code>/change</code></td><td>Configure volatility alerts per coin</td></tr>
+        <tr><td><code>/help</code></td><td>Show available commands</td></tr>
+      </tbody>
+    </table>
+
+    <h2>How to get started</h2>
+    <ol>
+      <li>Open the bot: <a href="https://t.me/MetaSync_bot">@MetaSync_bot</a></li>
+      <li>Tap <strong>Start</strong> (or send <code>/start</code>)</li>
+      <li>You are subscribed. Daily reports and alerts start arriving immediately.</li>
+    </ol>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>Is MetaSync Bot free?</h3>
+    <p>Yes. The bot is completely free — no paid tiers, no in-app purchases, no ads.</p>
+
+    <h3>Which cryptocurrencies are supported?</h3>
+    <p>Bitcoin (BTC), Ethereum (ETH) and Solana (SOL).</p>
+
+    <h3>How accurate are the prices?</h3>
+    <p>Prices are fetched from a public market-data aggregator and refreshed every minute, so quotes are close to live market values.</p>
+
+    <h3>Will the bot spam me?</h3>
+    <p>No. You receive one daily summary, plus an alert only when a tracked coin moves more than 1%. You can disable alerts per coin anytime with <code>/change</code>, or unsubscribe completely with <code>/stop</code>.</p>
+
+    <h3>Does the bot store personal data?</h3>
+    <p>Only your Telegram chat ID, which is needed to deliver messages. No wallets, no emails, no profile information.</p>
+
+    <h2>Source code</h2>
+    <p>MetaSync Bot is open source. You can inspect the code, run your own instance or contribute on <a href="https://github.com/AndVK/MetaSync_bot">GitHub</a>.</p>
+
+    <h2>Feedback &amp; support</h2>
+    <p>Questions, suggestions or bug reports — message <a href="https://t.me/annnnnnnnx">@annnnnnnnx</a> in Telegram.</p>
+
+    <footer>
+      <p>&copy; MetaSync Bot. Open source Telegram bot for crypto price tracking.</p>
+    </footer>
+  </main>
 </body>
 </html>
